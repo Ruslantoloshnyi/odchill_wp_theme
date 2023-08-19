@@ -92,3 +92,32 @@ function odchill_architecture_post_type()
 	register_post_type('architecture', $args);
 }
 add_action('init', 'odchill_architecture_post_type');
+
+/**
+ * Add a news post type.
+ */
+function odchill_news_post_type()
+{
+	$args = array(
+		'public' => true,
+		'show_in_rest' => true,
+		'label'  => 'Новини',
+		'supports' => array('title', 'editor', 'thumbnail', 'author'),
+		'has_archive' => true,
+		'menu_position' => 8,
+
+	);
+	register_post_type('news', $args);
+}
+add_action('init', 'odchill_news_post_type');
+
+/**
+ * Registed custom image size.
+ */
+function oddchill_custom_image_sizes()
+{
+	add_image_size('custom-thumbnail', 300, 190, true); // Название размера, ширина, высота, обрезка
+	add_image_size('custom-medium', 600, 300, true);
+	add_image_size('custom-large', 800, 400, true);
+}
+add_action('after_setup_theme', 'oddchill_custom_image_sizes');

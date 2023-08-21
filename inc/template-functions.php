@@ -115,3 +115,15 @@ function oddchill_custom_image_sizes()
 	add_image_size('custom-large', 800, 400, true);
 }
 add_action('after_setup_theme', 'oddchill_custom_image_sizes');
+
+/**
+ * add support template
+ */
+function custom_taxonomy_template($template)
+{
+	if (is_tax('type')) {
+		$template = locate_template('archive-place.php');
+	}
+	return $template;
+}
+add_filter('template_include', 'custom_taxonomy_template');

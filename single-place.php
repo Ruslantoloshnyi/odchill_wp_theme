@@ -34,7 +34,8 @@ while (have_posts()) :
                 if (have_rows('place_slider')) :
                     while (have_rows('place_slider')) : the_row();
                         $img = get_sub_field('place_slider_image');
-                        $image = wp_get_attachment_image($img, 'custom-large', '[class => carousel__img]')
+
+                        $image = wp_get_attachment_image($img, 'custom-large', false, ['class' => 'carousel__img']);
                 ?>
                         <div class="carousel__item">
                             <?php echo $image; ?>

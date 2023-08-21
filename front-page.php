@@ -4,27 +4,19 @@
     <div class="container">
         <div class="content__background">
             <?php
-            // $post_types = array('beach', 'park', 'architecture');
-
-            // foreach ($post_types as $post_type) :
-            //     $args = array(
-            //         'post_type' => $post_type,
-            //         'orderby' => 'rand',
-            //         'posts_per_page' => 1
-            //     );
             $terms = get_terms(array(
-                'taxonomy' => 'type', // Замените на имя вашей таксономии
-                'hide_empty' => false, // Включаем даже пустые термины
+                'taxonomy' => 'type',
+                'hide_empty' => false,
             ));
             if (!empty($terms)) :
                 foreach ($terms as $term) :
                     $args = array(
-                        'post_type' => 'place', // Замените на имя вашего пользовательского типа записей
+                        'post_type' => 'place',
                         'posts_per_page' => 1,
                         'orderby' => 'rand',
                         'tax_query' => array(
                             array(
-                                'taxonomy' => 'type', // Замените на имя вашей таксономии
+                                'taxonomy' => 'type',
                                 'field' => 'term_id',
                                 'terms' => $term->term_id,
                             ),
@@ -39,9 +31,9 @@
                                 <div class="content">
                                     <div class="content__image">
                                         <?php the_post_thumbnail('custom-large'); ?>
-                                        <a href="">
-                                            <h2 class="content__head image__head"><?php the_title(); ?></h2>
-                                        </a>
+
+                                        <h2 class="content__head image__head"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+
                                         <div class="content_author">
                                             <?php
                                             $author_id = get_the_author_meta('ID');
@@ -49,7 +41,7 @@
                                             ?>
                                             <div>
                                                 <div class="content_author__name author__text"><?php the_author(); ?></div>
-                                                <div class="content_author__date author__text"><?php the_date('d-m-Y'); ?></div>
+                                                <div class="content_author__date author__text"><?php echo get_the_date('d-m-Y'); ?></div>
                                             </div>
                                         </div>
                                     </div>

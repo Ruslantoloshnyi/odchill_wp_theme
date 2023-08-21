@@ -4,46 +4,65 @@
     <div class="container">
         <div class="content__background">
             <?php
-            $post_types = array('beach', 'park', 'architecture');
+            // $post_types = array('beach', 'park', 'architecture');
 
-            foreach ($post_types as $post_type) :
-                $args = array(
-                    'post_type' => $post_type,
-                    'orderby' => 'rand',
-                    'posts_per_page' => 1
-                );
+            // foreach ($post_types as $post_type) :
+            //     $args = array(
+            //         'post_type' => $post_type,
+            //         'orderby' => 'rand',
+            //         'posts_per_page' => 1
+            //     );
+            $terms = get_terms(array(
+                'taxonomy' => 'type', // Замените на имя вашей таксономии
+                'hide_empty' => false, // Включаем даже пустые термины
+            ));
+            if (!empty($terms)) :
+                foreach ($terms as $term) :
+                    $args = array(
+                        'post_type' => 'place', // Замените на имя вашего пользовательского типа записей
+                        'posts_per_page' => 1,
+                        'orderby' => 'rand',
+                        'tax_query' => array(
+                            array(
+                                'taxonomy' => 'type', // Замените на имя вашей таксономии
+                                'field' => 'term_id',
+                                'terms' => $term->term_id,
+                            ),
+                        ),
+                    );
 
-                $random_post = new WP_Query($args);
+                    $random_post = new WP_Query($args);
 
-                if ($random_post->have_posts()) :
-                    while ($random_post->have_posts()) : $random_post->the_post(); ?>
-                        <div class="wrapper">
-                            <div class="content">
-                                <div class="content__image">
-                                    <?php the_post_thumbnail('custom-large'); ?>
-                                    <a href="">
-                                        <h2 class="content__head image__head"><?php the_title(); ?></h2>
-                                    </a>
-                                    <div class="content_author">
-                                        <?php
-                                        $author_id = get_the_author_meta('ID');
-                                        echo get_avatar($author_id, 30);
-                                        ?>
-                                        <div>
-                                            <div class="content_author__name author__text"><?php the_author(); ?></div>
-                                            <div class="content_author__date author__text"><?php the_date('d-m-Y'); ?></div>
+                    if ($random_post->have_posts()) :
+                        while ($random_post->have_posts()) : $random_post->the_post(); ?>
+                            <div class="wrapper">
+                                <div class="content">
+                                    <div class="content__image">
+                                        <?php the_post_thumbnail('custom-large'); ?>
+                                        <a href="">
+                                            <h2 class="content__head image__head"><?php the_title(); ?></h2>
+                                        </a>
+                                        <div class="content_author">
+                                            <?php
+                                            $author_id = get_the_author_meta('ID');
+                                            echo get_avatar($author_id, 30);
+                                            ?>
+                                            <div>
+                                                <div class="content_author__name author__text"><?php the_author(); ?></div>
+                                                <div class="content_author__date author__text"><?php the_date('d-m-Y'); ?></div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="content__text text">
-                                    <div><?php the_excerpt(); ?></div>
+                                    <div class="content__text text">
+                                        <div><?php the_excerpt(); ?></div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
             <?php endwhile;
-                    wp_reset_postdata();
-                endif;
-            endforeach;
+                        wp_reset_postdata();
+                    endif;
+                endforeach;
+            endif;
             ?>
         </div>
     </div>
@@ -53,11 +72,9 @@
     <div class="container">
         <div class="read">
             <h2>Want to read more?</h2>
-            <?php $archive_link =  esc_url(get_template_directory_uri() . '/templates/all-cpts.php');
-            if ($archive_link) :
-            ?>
-                <a class="btn" href="<?php echo $archive_link; ?>">Visit Blog Archive</a>
-            <?php endif; ?>
+            <?php $archive_place_link = get_post_type_archive_link('place'); ?>
+            <a class="btn" href="<?php echo esc_url($archive_place_link); ?>">Visit Blog Archive</a>
+
         </div>
     </div>
 </section>

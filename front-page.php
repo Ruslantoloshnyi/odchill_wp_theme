@@ -53,7 +53,11 @@
     <div class="container">
         <div class="read">
             <h2>Want to read more?</h2>
-            <a class="btn" href="#">Visit Blog Archive</a>
+            <?php $archive_link =  esc_url(get_template_directory_uri() . '/templates/all-cpts.php');
+            if ($archive_link) :
+            ?>
+                <a class="btn" href="<?php echo $archive_link; ?>">Visit Blog Archive</a>
+            <?php endif; ?>
         </div>
     </div>
 </section>

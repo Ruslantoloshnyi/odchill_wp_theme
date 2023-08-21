@@ -145,7 +145,7 @@ function odchill_scripts()
 {
 	wp_enqueue_style('odchill-style', get_template_directory_uri() . '/assets/css/main.min.css');
 
-	wp_enqueue_script('odchill-script', get_template_directory_uri() . '/assets/js/main.min.js', array(), _S_VERSION, true);
+	wp_enqueue_script('odchill-script', get_template_directory_uri() . '/assets/js/test.js', array('jquery'), _S_VERSION, true);
 }
 add_action('wp_enqueue_scripts', 'odchill_scripts');
 

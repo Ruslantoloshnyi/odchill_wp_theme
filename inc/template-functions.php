@@ -40,60 +40,6 @@ function odchill_pingback_header()
 add_action('wp_head', 'odchill_pingback_header');
 
 /**
- * Add a beach post type.
- */
-function odchill_beach_post_type()
-{
-	$args = array(
-		'public' => true,
-		'show_in_rest' => true,
-		'label'  => 'Пляжі',
-		'supports' => array('title', 'editor', 'thumbnail', 'author',),
-		'has_archive' => true,
-		'menu_position' => 5,
-
-	);
-	register_post_type('beach', $args);
-}
-add_action('init', 'odchill_beach_post_type');
-
-/**
- * Add a park post type.
- */
-function odchill_park_post_type()
-{
-	$args = array(
-		'public' => true,
-		'show_in_rest' => true,
-		'label'  => 'Парки',
-		'supports' => array('title', 'editor', 'thumbnail', 'author'),
-		'has_archive' => true,
-		'menu_position' => 5,
-
-	);
-	register_post_type('park', $args);
-}
-add_action('init', 'odchill_park_post_type');
-
-/**
- * Add a architecture post type.
- */
-function odchill_architecture_post_type()
-{
-	$args = array(
-		'public' => true,
-		'show_in_rest' => true,
-		'label'  => 'Архітектура',
-		'supports' => array('title', 'editor', 'thumbnail', 'author'),
-		'has_archive' => true,
-		'menu_position' => 7,
-
-	);
-	register_post_type('architecture', $args);
-}
-add_action('init', 'odchill_architecture_post_type');
-
-/**
  * Add a news post type.
  */
 function odchill_news_post_type()
@@ -110,6 +56,54 @@ function odchill_news_post_type()
 	register_post_type('news', $args);
 }
 add_action('init', 'odchill_news_post_type');
+
+/**
+ * Add a place post type.
+ */
+function odchill_place_post_type()
+{
+	$args = array(
+		'public' => true,
+		'show_in_rest' => true,
+		'label'  => 'Місця',
+		'supports' => array('title', 'editor', 'thumbnail', 'author'),
+		'has_archive' => true,
+		'menu_position' => 8,
+
+	);
+	register_post_type('place', $args);
+}
+add_action('init', 'odchill_place_post_type');
+
+/**
+ * Registed type taxonomy.
+ */
+function oddchill_create_type_taxonomy()
+{
+	$labels = array(
+		'name'              => 'Types',
+		'singular_name'     => 'type',
+		'search_items'      => 'Search type',
+		'all_items'         => 'All types',
+		'edit_item'         => 'Edit types',
+		'update_item'       => 'Update type',
+		'add_new_item'      => 'Add new type',
+		'new_item_name'     => 'new type name',
+		'menu_name'         => 'Типи'
+	);
+
+	$args = array(
+		'hierarchical'      => true,
+		'labels'            => $labels,
+		'show_ui'           => true,
+		'show_admin_column' => true,
+		'query_var'         => true,
+		'rewrite'           => array('slug' => 'Тип')
+	);
+
+	register_taxonomy('type', 'place', $args);
+}
+add_action('init', 'oddchill_create_type_taxonomy');
 
 /**
  * Registed custom image size.

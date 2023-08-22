@@ -104,9 +104,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="<?php the_permalink(); ?>">
-                                <div class="stories_content_block__title text"><?php the_title(); ?></div>
-                            </a>
+
+                            <div class="stories_content_block__title text"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></div>
+
                         </div>
                     <?php endwhile; ?>
                     <?php wp_reset_postdata(); ?>

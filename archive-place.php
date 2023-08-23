@@ -5,10 +5,12 @@ if (is_tax('type')) {
     $current_term = get_queried_object(); // Get current taxonomy term
 
     // Create a WP_Query to display posts for this term only
+    $paged = get_query_var('paged') ? get_query_var('paged') : 1;
     $args = array(
         'post_type' => 'place',
-        'post_per_page' => -1,
-        'orderby' => 'rand',
+        'posts_per_page' => 6,
+        'paged' => $paged,
+        'orderby' => 'date',
         'tax_query' => array(
             array(
                 'taxonomy' => 'type',
@@ -53,17 +55,42 @@ if (is_tax('type')) {
                     endwhile;
                     wp_reset_postdata();
                 endif; ?>
+                <div class="pagination">
+                    <?php
+                    $args = [
+                        'total'        => $query->max_num_pages,
+                        'current'      => $paged,
+                        'show_all'     => False,
+                        // 'end_size'     => 1,
+                        // 'mid_size'     => 2,
+                        'prev_next'    => True,
+                        'prev_text'    => __('&#171;'),
+                        'next_text'    => __('&#187;'),
+                    ];
+
+                    echo paginate_links($args);
+                    ?>
+                </div>
             </div>
         </div>
     </section>
 <?php
-} else { ?>
+} else {
+    $paged = get_query_var('paged') ? get_query_var('paged') : 1;
+    $args = array(
+        'post_type' => 'place',
+        'posts_per_page' => 6,
+        'paged' => $paged,
+        'orderby' => 'date',
+    );
+
+    $query = new WP_Query($args); ?>
     <section>
         <div class="container">
             <div class="content__background">
                 <?php
-                if (have_posts()) :
-                    while (have_posts()) : the_post(); ?>
+                if ($query->have_posts()) :
+                    while ($query->have_posts()) : $query->the_post(); ?>
                         <div class="wrapper">
                             <div class="content">
                                 <div class="content__image">
@@ -91,6 +118,23 @@ if (is_tax('type')) {
                 else :
                     echo '<p>Записи не найдены.</p>';
                 endif; ?>
+                <div class="pagination">
+                    <?php
+                    $args = [
+
+                        'total'        => $query->max_num_pages,
+                        'current'      => $paged,
+                        'show_all'     => False,
+                        // 'end_size'     => 1,
+                        // 'mid_size'     => 2,
+                        'prev_next'    => True,
+                        'prev_text'    => __('&#171;'),
+                        'next_text'    => __('&#187;'),
+                    ];
+
+                    echo paginate_links($args);
+                    ?>
+                </div>
             </div>
         </div>
     </section>

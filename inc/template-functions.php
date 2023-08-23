@@ -127,3 +127,8 @@ function custom_taxonomy_template($template)
 	return $template;
 }
 add_filter('template_include', 'custom_taxonomy_template');
+
+/**
+ * add filter into excerpt function
+ */
+add_filter('excerpt_more', fn () => ' ...');

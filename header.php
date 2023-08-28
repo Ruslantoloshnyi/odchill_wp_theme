@@ -19,6 +19,9 @@
 	<meta name="theme-color" content="#fff">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
 
 
 	<?php wp_head(); ?>
@@ -31,7 +34,7 @@
 			<div class="header_container">
 				<div class="header__body">
 					<a class="header__logo" href="">
-						<div>Odessa</div>
+						<div><?php bloginfo('name'); ?></div>
 					</a>
 					<div class="header__burger">
 						<span></span>

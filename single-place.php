@@ -7,7 +7,7 @@ while (have_posts()) :
             <div class="single__wrapper">
                 <div class="content">
                     <div class="content__image">
-                        <?php the_post_thumbnail('custom-large'); ?>
+                        <a class="inactive__link" href=""><?php the_post_thumbnail('custom-large'); ?></a>
                         <h2 class="content__head image__head"><?php the_title(); ?></h2>
                         <div class="content_author">
                             <?php
@@ -42,6 +42,12 @@ while (have_posts()) :
                         </div>
                     <?php endwhile; ?>
                 <?php endif; ?>
+            </div>
+        </div>
+        <div class="map_block">
+            <div class="map_block__heading">Місцеположення</div>
+            <div class="map-responsive">
+                <?php echo get_field('places_map'); ?>
             </div>
         </div>
     </div>

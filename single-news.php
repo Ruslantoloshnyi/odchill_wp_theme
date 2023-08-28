@@ -9,7 +9,7 @@ while (have_posts()) :
             <div class="single__wrapper">
                 <div class="content">
                     <div class="content__image">
-                        <?php the_post_thumbnail('custom-large'); ?>
+                        <a class="inactive__link" href=""><?php the_post_thumbnail('custom-large'); ?></a>
                         <h2 class="content__head image__head"><?php the_title(); ?></h2>
                         <div class="content_author">
                             <?php

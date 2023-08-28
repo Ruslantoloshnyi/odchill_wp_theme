@@ -32,9 +32,9 @@ if (is_tax('type')) {
                         <div class="wrapper">
                             <div class="content">
                                 <div class="content__image">
-                                    <?php the_post_thumbnail('custom-large'); ?>
+                                    <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('custom-large'); ?></a>
 
-                                    <h2 class="content__head image__head"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+                                    <h2 class="content__head image__head"><?php the_title(); ?></h2>
                                     <div class="content_author">
                                         <?php
                                         $author_id = get_the_author_meta('ID');
@@ -94,8 +94,8 @@ if (is_tax('type')) {
                         <div class="wrapper">
                             <div class="content">
                                 <div class="content__image">
-                                    <?php the_post_thumbnail('custom-large'); ?>
-                                    <h2 class="content__head image__head"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+                                    <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('custom-large'); ?></a>
+                                    <h2 class="content__head image__head"><?php the_title(); ?></h2>
                                     <div class="content_author">
                                         <?php
                                         $author_id = get_the_author_meta('ID');

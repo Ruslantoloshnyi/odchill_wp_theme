@@ -20,7 +20,7 @@
                 ?>
                         <div class="stories_content_block">
                             <div class="stories_content_block__image">
-                                <?php the_post_thumbnail('custom-thumbnail') ?>
+                                <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('custom-thumbnail') ?></a>
                                 <div class="stories_content_block_author">
                                     <?php
                                     $author_id = get_the_author_meta('ID');

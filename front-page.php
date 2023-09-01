@@ -47,6 +47,7 @@
                                     </div>
                                     <div class="content__text text">
                                         <div><?php the_excerpt(); ?></div>
+                                        <div class="content__link text"><a href="<?php the_permalink(); ?>">Читати більше &#8594;</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -63,9 +64,9 @@
 <section id="read_section">
     <div class="container">
         <div class="read">
-            <h2>Want to read more?</h2>
+            <h2>Бажаєш знати більше?</h2>
             <?php $archive_place_link = get_post_type_archive_link('place'); ?>
-            <a class="btn" href="<?php echo esc_url($archive_place_link); ?>">Visit Blog Archive</a>
+            <a class="btn" href="<?php echo esc_url($archive_place_link); ?>">Відвідати</a>
 
         </div>
     </div>
@@ -75,8 +76,8 @@
 <section>
     <div class="container">
         <div class="stories">
-            <h2>Featured Stories</h2>
-            <div class="stories__subhead">Did you read our personal favorites?</div>
+            <h2>Новини Одеси</h2>
+            <div class="stories__subhead">Бажаєш прочитати наші останні новини?</div>
             <div class="stories_content">
                 <?php
                 $args = array(
@@ -113,9 +114,9 @@
                 <?php endif; ?>
             </div>
             <div class="stories_foot">
-                <div class="stories_foot__text">Want to read all of our stories?</div>
+                <div class="stories_foot__text">Бажаєш читати всі наші новини?</div>
                 <?php $archive_link = get_post_type_archive_link('news'); ?>
-                <a href="<?php echo esc_url($archive_link); ?>">Read the full blog</a>
+                <a href="<?php echo esc_url($archive_link); ?>">Читати всі новини</a>
             </div>
         </div>
     </div>

@@ -14,8 +14,8 @@
 
 <footer>
 	<div class="footer_content">
-		<div>Copyright © Ruslan Toloshnyi, 2023</div>
-		<div>ruslantoloshnyi@gmail.com</div>
+		<div>Copyright © OdesaChill, 2023</div>
+		<div>Made by ruslantoloshnyi@gmail.com</div>
 	</div>
 </footer>
 <?php wp_footer(); ?>

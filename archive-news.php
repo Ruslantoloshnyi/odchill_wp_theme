@@ -3,7 +3,7 @@
 <section <?php if (is_archive('news')) : ?>class="archive" <?php endif; ?>>
     <div class="container">
         <div class="stories">
-            <h2>Featured Stories</h2>
+            <h2>Новини Одеси</h2>
             <div class="stories__subhead"></div>
             <div class="stories_content">
                 <?php

@@ -42,12 +42,13 @@ if (is_tax('type')) {
                                         ?>
                                         <div>
                                             <div class="content_author__name author__text"><?php the_author(); ?></div>
-                                            <div class="content_author__date author__text"><?php the_date('d-m-Y'); ?></div>
+                                            <div class="content_author__date author__text"><?php echo get_the_date('d-m-Y'); ?></div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="content__text text">
                                     <div><?php the_excerpt(); ?></div>
+                                    <div class="content__link text"><a href="<?php the_permalink(); ?>">Читати більше &#8594;</a></div>
                                 </div>
                             </div>
                         </div>
@@ -109,6 +110,7 @@ if (is_tax('type')) {
                                 </div>
                                 <div class="content__text text">
                                     <div><?php the_excerpt(); ?></div>
+                                    <div class="content__link text"><a href="<?php the_permalink(); ?>">Читати більше &#8594;</a></div>
                                 </div>
                             </div>
                         </div>

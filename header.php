@@ -34,7 +34,7 @@
 		<header class="header">
 			<div class="header_container">
 				<div class="header__body">
-					<a class="header__logo" href="">
+					<a class="header__logo" href="<?php echo home_url(); ?>">
 						<div><?php bloginfo('name'); ?></div>
 					</a>
 					<div class="header__burger">

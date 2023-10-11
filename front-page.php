@@ -1,5 +1,10 @@
 <?php get_header(); ?>
 
+<a class="header__link" href="#">
+    <div>
+        <h1 class="header__heading">Популярні місця Одеси</h1>
+    </div>
+</a>
 <section>
     <div class="container">
         <div class="content__background">

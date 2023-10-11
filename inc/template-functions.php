@@ -15,12 +15,14 @@
 function odchill_body_classes($classes)
 {
 	// Adds a class of hfeed to non-singular pages.
-	if (!is_singular()) {
+	if (!is_singular())
+	{
 		$classes[] = 'hfeed';
 	}
 
 	// Adds a class of no-sidebar when there is no sidebar present.
-	if (!is_active_sidebar('sidebar-1')) {
+	if (!is_active_sidebar('sidebar-1'))
+	{
 		$classes[] = 'no-sidebar';
 	}
 
@@ -33,7 +35,8 @@ add_filter('body_class', 'odchill_body_classes');
  */
 function odchill_pingback_header()
 {
-	if (is_singular() && pings_open()) {
+	if (is_singular() && pings_open())
+	{
 		printf('<link rel="pingback" href="%s">', esc_url(get_bloginfo('pingback_url')));
 	}
 }
@@ -50,7 +53,7 @@ function odchill_news_post_type()
 		'label'  => 'Новини',
 		'supports' => array('title', 'editor', 'thumbnail', 'author'),
 		'has_archive' => true,
-		'menu_position' => 8,
+		'menu_position' => 5,
 
 	);
 	register_post_type('news', $args);
@@ -68,12 +71,30 @@ function odchill_place_post_type()
 		'label'  => 'Місця',
 		'supports' => array('title', 'editor', 'thumbnail', 'author'),
 		'has_archive' => true,
-		'menu_position' => 8,
+		'menu_position' => 6,
 
 	);
 	register_post_type('place', $args);
 }
 add_action('init', 'odchill_place_post_type');
+
+/**
+ * Add a resort post type.
+ */
+function odchill_resort_post_type()
+{
+	$args = array(
+		'public' => true,
+		'show_in_rest' => true,
+		'label'  => 'Курорти',
+		'supports' => array('title', 'editor', 'thumbnail'),
+		'has_archive' => true,
+		'menu_position' => 7,
+
+	);
+	register_post_type('resort', $args);
+}
+add_action('init', 'odchill_resort_post_type');
 
 /**
  * Registed type taxonomy.
@@ -98,7 +119,7 @@ function oddchill_create_type_taxonomy()
 		'show_ui'           => true,
 		'show_admin_column' => true,
 		'query_var'         => true,
-		'rewrite'           => array('slug' => 'Тип')
+		'rewrite'           => array('slug' => 'type')
 	);
 
 	register_taxonomy('type', 'place', $args);
@@ -121,7 +142,8 @@ add_action('after_setup_theme', 'oddchill_custom_image_sizes');
  */
 function custom_taxonomy_template($template)
 {
-	if (is_tax('type')) {
+	if (is_tax('type'))
+	{
 		$template = locate_template('archive-place.php');
 	}
 	return $template;

@@ -8,7 +8,8 @@
  * @package odessachill
  */
 
-if (!defined('_S_VERSION')) {
+if (!defined('_S_VERSION'))
+{
 	// Replace the version number of the theme on each release.
 	define('_S_VERSION', '1.0.0');
 }
@@ -147,7 +148,15 @@ function odchill_scripts()
 
 	wp_enqueue_script('odchill-script', get_template_directory_uri() . '/assets/js/test.js', array('jquery'), _S_VERSION, true);
 
-	if (is_singular('place')) {
+	if (is_singular('place'))
+	{
+		wp_enqueue_style('slick', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css');
+		wp_enqueue_script('slick', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js', array('jquery'), '1.8.1', true);
+		wp_enqueue_script('odchill-script-slick', get_template_directory_uri() . '/assets/js/slick.js', array('jquery'), _S_VERSION, true);
+	}
+
+	if (is_singular('resort'))
+	{
 		wp_enqueue_style('slick', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css');
 		wp_enqueue_script('slick', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js', array('jquery'), '1.8.1', true);
 		wp_enqueue_script('odchill-script-slick', get_template_directory_uri() . '/assets/js/slick.js', array('jquery'), _S_VERSION, true);
@@ -178,6 +187,7 @@ require get_template_directory() . '/inc/customizer.php';
 /**
  * Load Jetpack compatibility file.
  */
-if (defined('JETPACK__VERSION')) {
+if (defined('JETPACK__VERSION'))
+{
 	require get_template_directory() . '/inc/jetpack.php';
 }

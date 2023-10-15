@@ -1,6 +1,8 @@
 <?php get_header(); ?>
 
-<a class="header__link" href="#">
+<?php $archive_place_link = get_post_type_archive_link('place'); ?>
+
+<a class="header__link" href="<?php echo esc_url($archive_place_link); ?>">
     <div>
         <h1 class="header__heading">Популярні місця Одеси</h1>
     </div>
@@ -70,7 +72,6 @@
     <div class="container">
         <div class="read">
             <h2>Бажаєш знати більше?</h2>
-            <?php $archive_place_link = get_post_type_archive_link('place'); ?>
             <a class="btn" href="<?php echo esc_url($archive_place_link); ?>">Відвідати</a>
 
         </div>

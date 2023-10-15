@@ -4,7 +4,7 @@
 while (have_posts()) :
     the_post(); ?>
     </div>
-    <section>
+    <section id="single-news">
         <div class="container">
             <div class="single__wrapper">
                 <div class="content">

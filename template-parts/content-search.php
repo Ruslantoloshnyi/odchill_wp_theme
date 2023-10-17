@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Template part for displaying results in search pages
  *
@@ -10,26 +11,26 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
 
-		<?php if ( 'post' === get_post_type() ) : ?>
-		<div class="entry-meta">
-			<?php
-			odchill_posted_on();
-			odchill_posted_by();
-			?>
-		</div><!-- .entry-meta -->
-		<?php endif; ?>
-	</header><!-- .entry-header -->
+	<div class="wrapper">
+		<div class="content">
+			<div class="content__image">
+				<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('custom-large'); ?></a>
 
-	<?php odchill_post_thumbnail(); ?>
+				<h2 class="content__head image__head"><?php the_title(); ?></h2>
+				<div class="content_author">
 
-	<div class="entry-summary">
-		<?php the_excerpt(); ?>
-	</div><!-- .entry-summary -->
+					<div>
+						<div class="content_author__name author__text"></div>
+						<div class="content_author__date author__text"></div>
+					</div>
+				</div>
+			</div>
+			<div class="content__text text">
+				<div><?php the_excerpt(); ?></div>
+				<div class="content__link text"><a href="<?php the_permalink(); ?>">Читати більше &#8594;</a></div>
+			</div>
+		</div>
+	</div>
 
-	<footer class="entry-footer">
-		<?php odchill_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->

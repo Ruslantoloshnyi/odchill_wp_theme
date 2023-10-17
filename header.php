@@ -37,6 +37,12 @@
 					<a class="header__logo" href="<?php echo home_url(); ?>">
 						<div><?php bloginfo('name'); ?></div>
 					</a>
+					<div class="header__search search-first">
+						<form role="search" method="get" id="searchform" action="<?php echo home_url('/'); ?>">
+							<input type="text" value="" name="s" id="s" placeholder="Пошук по сайту" />
+							<input type="submit" id="searchsubmit" value="Пошук" />
+						</form>
+					</div>
 					<div class="header__burger">
 						<span></span>
 					</div>
@@ -55,6 +61,13 @@
 						?>
 
 					</nav>
+
+				</div>
+				<div class="header__search search-second">
+					<form role="search" method="get" id="searchform" action="<?php echo home_url('/'); ?>">
+						<input type="text" value="" name="s" id="s" placeholder="Пошук по сайту" />
+						<input type="submit" id="searchsubmit" value="Пошук" />
+					</form>
 				</div>
 			</div>
 		</header>
